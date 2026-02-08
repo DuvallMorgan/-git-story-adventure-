@@ -1,0 +1,5 @@
+The Unbreakable Mindset.
+
+You are a single Data Packet traveling through the vast network of the Google OAuth 2.0 flow. You’ve just left the Website and arrived at the Auth Server.
+
+Security guards (Firewalls) are checking your headers. You have a Client_ID, but you’re missing your Secret. If you don't find it soon, the session will time out and the User will be stuck on a loading screen forever.
