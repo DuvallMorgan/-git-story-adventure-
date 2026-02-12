@@ -1,0 +1,39 @@
+// pages/WatchPage.jsx
+const WatchPage = () => {
+  const [isAdPlaying, setIsAdPlaying] = useState(true); // Start with Pre-roll
+  const [videoStarted, setVideoStarted] = useState(false);
+
+  return (
+    <div className="flex flex-col lg:flex-row gap-6 p-4 bg-black min-h-screen text-white">
+      {/* LEFT SIDE: THE PLAYER */}
+      <div className="flex-1">
+        <div className="relative aspect-video bg-zinc-900 rounded-xl overflow-hidden shadow-2xl">
+          {isAdPlaying ? (
+            <AdPlayer onAdComplete={() => setIsAdPlaying(false)} />
+          ) : (
+            <video 
+              controls 
+              className="w-full h-full"
+              autoPlay={videoStarted}
+              src="your-main-video-url.mp4"
+            />
+          )}
+        </div>
+        
+        <h1 className="text-xl font-bold mt-4">Project Whole Bag: Scaling to 1M Users</h1>
+        <div className="flex items-center justify-between py-4 border-b border-zinc-800">
+           {/* Channel Info & Subscribe Button */}
+        </div>
+      </div>
+
+      {/* RIGHT SIDE: THE AI TRIAGE ADS & UP NEXT */}
+      <div className="w-full lg:w-[400px]">
+        <div className="bg-zinc-900 p-4 rounded-xl mb-4 border border-blue-500/30">
+          <span className="text-blue-400 text-xs font-bold uppercase tracking-widest">Sponsored Lead</span>
+          <p className="text-sm mt-2">Relay AI: High-value commenter detected in your viral shorts. [Click to Triage]</p>
+        </div>
+        {/* Recommended Videos List */}
+      </div>
+    </div>
+  );
+};
