@@ -1,0 +1,42 @@
+// components/AdPlayer.jsx
+import React, { useState, useEffect } from 'react';
+
+const AdPlayer = ({ onAdComplete }) => {
+  const [timeLeft, setTimeLeft] = useState(5); // 5s unskippable
+  const [canSkip, setCanSkip] = useState(false);
+
+  useEffect(() => {
+    if (timeLeft > 0) {
+      const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
+      return () => clearTimeout(timer);
+    } else {
+      setCanSkip(true);
+    }
+  }, [timeLeft]);
+
+  return (
+    <div className="absolute inset-0 z-50 bg-black flex flex-col items-center justify-center">
+      {/* 1. The Ad Video Content */}
+      <div className="text-white text-xl font-bold italic">PROMOTED CONTENT</div>
+      
+      {/* 2. The YouTube-style Skip Button */}
+      <div className="absolute bottom-16 right-0">
+        <button 
+          onClick={canSkip ? onAdComplete : null}
+          className={`bg-black/80 text-white border-y border-l border-gray-500 py-3 px-6 text-sm flex items-center gap-2 transition-all ${!canSkip ? 'cursor-not-allowed opacity-70' : 'hover:bg-black'}`}
+        >
+          {canSkip ? (
+            "Skip Ad >|"
+          ) : (
+            `You can skip in ${timeLeft}s`
+          )}
+        </button>
+      </div>
+      
+      {/* 3. Small Visit Advertiser Link */}
+      <div className="absolute bottom-4 left-4 bg-white/10 p-2 rounded text-white text-xs">
+        Visit advertiser.com
+      </div>
+    </div>
+  );
+};
