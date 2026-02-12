@@ -1,0 +1,29 @@
+// pages/WatchPage.jsx
+const WatchPage = () => {
+  const [isTheaterMode, setIsTheaterMode] = useState(false);
+
+  return (
+    <div className={`flex flex-col ${isTheaterMode ? 'w-full' : 'lg:flex-row gap-6 p-4'} bg-black text-white`}>
+      {/* VIDEO CONTAINER */}
+      <div className={`${isTheaterMode ? 'w-full px-0' : 'flex-1'}`}>
+        <div className={`relative ${isTheaterMode ? 'h-[70vh]' : 'aspect-video'} bg-zinc-900 overflow-hidden`}>
+          <video className="w-full h-full object-contain" controls src="..." />
+          
+          {/* Theater Mode Button */}
+          <button 
+            onClick={() => setIsTheaterMode(!isTheaterMode)}
+            className="absolute bottom-4 right-20 p-2 hover:bg-white/20 rounded"
+            title="Theater Mode (t)"
+          >
+            <rect className="w-5 h-4 border-2 border-white" />
+          </button>
+        </div>
+      </div>
+
+      {/* SIDEBAR - Automatically moves below video in Theater Mode */}
+      <div className={`${isTheaterMode ? 'w-full max-w-4xl mx-auto mt-6' : 'w-[400px]'}`}>
+        {/* Recommendation list */}
+      </div>
+    </div>
+  );
+};
