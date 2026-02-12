@@ -1,0 +1,21 @@
+// components/ProgressBar.jsx
+const ProgressBar = ({ duration, currentTime, adMarkers = [30, 120, 300] }) => {
+  return (
+    <div className="relative w-full h-1.5 bg-gray-600 cursor-pointer group">
+      {/* 1. The Actual Progress */}
+      <div 
+        className="absolute top-0 left-0 h-full bg-red-600 z-10" 
+        style={{ width: `${(currentTime / duration) * 100}%` }}
+      ></div>
+
+      {/* 2. Ad Markers (Yellow Dots) */}
+      {adMarkers.map((marker, index) => (
+        <div 
+          key={index}
+          className="absolute top-0 w-1 h-full bg-yellow-400 z-20"
+          style={{ left: `${(marker / duration) * 100}%` }}
+        ></div>
+      ))}
+    </div>
+  );
+};
