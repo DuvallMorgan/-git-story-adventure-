@@ -1,0 +1,22 @@
+// components/Sidebar.jsx
+const RecommendationSidebar = () => {
+  return (
+    <aside className="flex flex-col gap-4">
+      <h2 className="text-sm font-bold text-gray-400 uppercase tracking-widest">Up Next</h2>
+      
+      {/* Use a simple loop for recommendations */}
+      {[1, 2, 3, 4, 5].map((item) => (
+        <div key={item} className="flex gap-2 group cursor-pointer">
+          <div className="w-40 h-24 bg-zinc-800 rounded-lg overflow-hidden shrink-0">
+            <img src={`thumb-${item}.jpg`} className="group-hover:scale-110 transition-transform duration-500" />
+          </div>
+          <div className="flex flex-col gap-1">
+            <h4 className="text-sm font-semibold line-clamp-2">AI Triage: The Future of Creator Revenue...</h4>
+            <span className="text-xs text-zinc-400">Duvall AI</span>
+            <span className="text-xs text-zinc-400">125K views • 1 day ago</span>
+          </div>
+        </div>
+      ))}
+    </aside>
+  );
+};
