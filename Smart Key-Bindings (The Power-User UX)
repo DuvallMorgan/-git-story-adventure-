@@ -1,0 +1,22 @@
+// Add this inside your WatchPage useEffect
+useEffect(() => {
+  const handleKeyPress = (e) => {
+    switch(e.key.toLowerCase()) {
+      case 'f': // Toggle Fullscreen
+        document.querySelector('video').requestFullscreen();
+        break;
+      case 't': // Toggle Theater Mode
+        setIsTheaterMode(prev => !prev);
+        break;
+      case 'k': // Pause/Play
+      case ' ':
+        const v = document.querySelector('video');
+        v.paused ? v.play() : v.pause();
+        break;
+      default: break;
+    }
+  };
+
+  window.addEventListener('keydown', handleKeyPress);
+  return () => window.removeEventListener('keydown', handleKeyPress);
+}, []);
